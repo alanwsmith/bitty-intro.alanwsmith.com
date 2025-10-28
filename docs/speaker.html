@@ -2012,7 +2012,9 @@ hgroup {
   </p>
   <style>:root { --load-hider: 1; }</style>
 </noscript>
-    <bitty-3-0 data-connect="/scripts/bitty-page.js" 
+    <bitty-3-0 
+      data-connect="/scripts/bitty-page.js" 
+      data-listeners="click|message"
       class="load-hider content-wrapper">
 
 <header class="default-wrapper xlarge-bottom-margin">
@@ -2023,14 +2025,6 @@ hgroup {
   </div>
 </header>
       <main class="default-wrapper default-flow">
-<script>
-window.addEventListener("message", (event) => {
-  if (event.isTrusted === true && event.origin === window.location.origin) {
-    console.log(event);
-  }
-})
-</script>
-
 <hgroup>
   <h1>Speaker Notes</h1>
 </hgroup>

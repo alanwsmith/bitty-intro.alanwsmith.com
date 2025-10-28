@@ -3,7 +3,19 @@ export default class {
 
   bittyInit() {
     this.api.fn.setProp("--load-hider", "1");
+
+    window.addEventListener("message", (event) => {
+      if (event.isTrusted === true && event.origin === window.location.origin) {
+        this.api.forward(event, "updateSpeaker");
+      }
+    })
   }
+
+  updateSpeaker(event, el) {
+    console.log("here2");
+    //console.log(event);
+  }
+
 
   openWindow(event, el) {
     const params = `scrollbars=no,resizable=yes,status=no,location=no,toolbar=no,menubar=no,width=800,top=20,left=20`
@@ -12,7 +24,7 @@ export default class {
           "speaker_notes",
           params
         );
-    console.log(event);
+    // console.log(event);
   }
 
   async switch(event, el) {
@@ -24,7 +36,7 @@ export default class {
     } else {
       el.innerHTML = resp.error;
     }
-    // this.#cw.postMessage(slide);
+    this.#cw.postMessage(slide);
   }
 
 };
