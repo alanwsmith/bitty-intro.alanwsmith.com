@@ -8,10 +8,30 @@
   </div>
 </hgroup>
 
-<p>hello, stream</p>
+<h2>Slides</h2>
+
+
+<ul>
+
+[! for folder in folders !]
+[! if folder.parent == "slides" !]
+
+  <li>
+<button 
+  data-send="switch" 
+  data-slide="[@ folder.name @]">[@ folder.name @]</button>
+  </li>
+
+[! endif !]
+[! endfor !]
+
+</ul>
+
+<h2>Content</h2>
+
+<div data-receive="switch"></div>
+
+<h2>Misc</h2>
 
 <button data-send="openWindow">open</button>
-<button data-send="sendMessage">send</button>
-
-
 [!- endblock -!]

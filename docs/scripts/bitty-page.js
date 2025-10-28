@@ -15,7 +15,16 @@ export default class {
     console.log(event);
   }
 
-  sendMessage(_event, _el) {
-    this.#cw.postMessage("here1");
+  async switch(event, el) {
+    const slide = event.target.dataset.slide;
+    const url = `/slides/${slide}/index.html`;
+    const resp = await this.api.getFragment(url);
+    if (resp.ok) {
+      el.replaceChildren(resp.ok);
+    } else {
+      el.innerHTML = resp.error;
+    }
+    // this.#cw.postMessage(slide);
   }
+
 };
