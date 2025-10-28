@@ -3,7 +3,6 @@ export default class {
 
   bittyInit() {
     this.api.fn.setProp("--load-hider", "1");
-
     window.addEventListener("message", (event) => {
       if (event.isTrusted === true && event.origin === window.location.origin) {
         this.api.forward(event, "updateSpeaker");
@@ -11,9 +10,12 @@ export default class {
     })
   }
 
-  updateSpeaker(event, el) {
-    console.log("here2");
-    //console.log(event);
+  async updateSpeaker(event, el) {
+    const url = `/slides/${event.data}/speaker.html`;
+    const resp = await this.api.getFragment(url);
+    if (resp.ok) {
+      el.replaceChildren(resp.ok);
+    }
   }
 
 
@@ -24,7 +26,6 @@ export default class {
           "speaker_notes",
           params
         );
-    // console.log(event);
   }
 
   async switch(event, el) {
@@ -38,5 +39,4 @@ export default class {
     }
     this.#cw.postMessage(slide);
   }
-
 };
