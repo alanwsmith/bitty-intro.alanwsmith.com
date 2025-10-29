@@ -1,17 +1,9 @@
 [!- extends "_wrappers/wrapper.html" -!]
 [!- block main -!]
 
-<hgroup>
-  <h1>A New Site</h1>
-  <div class="page-subtitle">
-    With a subtitle
-  </div>
-</hgroup>
-
-<h2>Slides</h2>
+<div data-receive="switch"></div>
 
 <ul>
-
 [! for folder in folders !]
 [! if folder.parent == "slides" !]
 
@@ -26,11 +18,6 @@
 
 </ul>
 
-<h2>Content</h2>
-
-<div data-receive="switch">waiting</div>
-
-<h2>Misc</h2>
 
 <button data-send="openWindow">open</button>
 [!- endblock -!]
